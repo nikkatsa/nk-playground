@@ -46,19 +46,19 @@ public class PersonalInfoReader {
     private static final Options createCommandLineOptions() {
         final Options options = new Options();
 
-        final Option nameCmdOption = Option.builder("n").hasArg(true).argName("name").longOpt("name").desc("Person's name").required(true).type(String.class).build();
+        final Option nameCmdOption = Option.builder("n").hasArg(true).argName(NAME_CMD_OPTION).longOpt(NAME_CMD_OPTION).desc("Person's name").required(true).type(String.class).build();
         options.addOption(nameCmdOption);
 
-        final Option surnameCmdOption = Option.builder("s").hasArg(true).argName("surname").longOpt("surname").desc("Person's surname").required(true).type(String.class).build();
+        final Option surnameCmdOption = Option.builder("s").hasArg(true).argName(SURNAME_CMD_OPTION).longOpt(SURNAME_CMD_OPTION).desc("Person's surname").required(true).type(String.class).build();
         options.addOption(surnameCmdOption);
 
-        final Option ageCmdOption = Option.builder("a").hasArg(true).argName("age").longOpt("age").desc("Person's age").required(true).type(Integer.class).build();
+        final Option ageCmdOption = Option.builder("a").hasArg(true).argName(AGE_CMD_OPTION).longOpt(AGE_CMD_OPTION).desc("Person's age").required(true).type(Integer.class).build();
         options.addOption(ageCmdOption);
 
-        final Option emailCmdOption = Option.builder("e").hasArg(true).argName("email").longOpt("email").desc("Person's email").required(false).type(String.class).build();
+        final Option emailCmdOption = Option.builder("e").hasArg(true).argName(EMAIL_CMD_OPTION).longOpt(EMAIL_CMD_OPTION).desc("Person's email").required(false).type(String.class).build();
         options.addOption(emailCmdOption);
 
-        final Option helpCmdOption = Option.builder("h").hasArg(false).argName("help").longOpt("help").desc("Present command line usage information").required(false).type(Boolean.class).build();
+        final Option helpCmdOption = Option.builder("h").hasArg(false).argName(HELP_CMD_OPTION).longOpt(HELP_CMD_OPTION).desc("Present command line usage information").required(false).type(Boolean.class).build();
         options.addOption(helpCmdOption);
 
         return options;
