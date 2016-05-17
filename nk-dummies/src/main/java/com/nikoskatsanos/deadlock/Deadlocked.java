@@ -26,27 +26,23 @@ public class Deadlocked {
         final Object rightObject = new Object();
 
         left.execute(() -> {
-            while (true) {
-                synchronized (leftObject) {
-                    ThreadUtils.sleepWithoutInterruption(3000L, TimeUnit.MILLISECONDS);
-                    log.info("Got left object, trying to acquire right now");
-                    synchronized (rightObject) {
-                        log.info("Got right object");
-                        throw new RuntimeException("Shouldn't get both objects");
-                    }
+            synchronized (leftObject) {
+                ThreadUtils.sleepWithoutInterruption(3000L, TimeUnit.MILLISECONDS);
+                log.info("Got left object, trying to acquire right now");
+                synchronized (rightObject) {
+                    log.info("Got right object");
+                    throw new RuntimeException("Shouldn't get both objects");
                 }
             }
         });
 
         right.execute(() -> {
-            while (true) {
-                synchronized (rightObject) {
-                    ThreadUtils.sleepWithoutInterruption(3000L, TimeUnit.MILLISECONDS);
-                    log.info("Got right object, trying to acquire left now");
-                    synchronized (leftObject) {
-                        log.info("Got left object");
-                        throw new RuntimeException("Shouldn't get both objects");
-                    }
+            synchronized (rightObject) {
+                ThreadUtils.sleepWithoutInterruption(3000L, TimeUnit.MILLISECONDS);
+                log.info("Got right object, trying to acquire left now");
+                synchronized (leftObject) {
+                    log.info("Got left object");
+                    throw new RuntimeException("Shouldn't get both objects");
                 }
             }
         });
