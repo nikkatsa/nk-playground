@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration name="BasicConfiguration" status="info" monitorInterval="60">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout header="**** Log4j2 File initialized ${date:dd-MM-YYYY:HH:mm:ss.SSS} ****%n%n"
+                           pattern="%d{ISO8601} %-5level %logger{36} [%-10.-10t] - %msg%n">
+            </PatternLayout>
+        </Console>
+
+        <RollingFile name="RollingFile" fileName="/var/log/WebSocketServer/WebSocketServer.log"
+                     filePattern="/var/log/WebSocketServer/WebSocketServer-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern header="**** Log4j2 File initialized ${date:dd-MM-YYYY:HH:mm:ss.SSS} ****%n%n"
+                         pattern="%d{ISO8601} %-5level %logger{36} [%-10.-10t] - %msg%n">
+                </Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="30 MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
