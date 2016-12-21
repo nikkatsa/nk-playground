@@ -88,6 +88,7 @@
                                             <extraArgument>-server</extraArgument>
                                             <extraArgument>-XX:+UseG1GC</extraArgument>
                                             <extraArgument>-Dlog4j.debug</extraArgument>
+                                            <extraArgument>-Dlog4j.configurationFile=WebSocket-log4j2.xml</extraArgument>
                                             <extraArgument>-Dlog4j.configuration=log4jNetty.xml</extraArgument>
                                             <extraArgument>-Xmx256M</extraArgument>
                                             <extraArgument>-Djava.net.preferIPv4Stack=true</extraArgument>

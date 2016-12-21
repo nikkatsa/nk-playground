@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>WebSocket Demo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <section id="container" class="sidebar-closed">
+        <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+        <!--header start-->
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="index.html" class="logo"><b>Web Sockets Demo</b></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu"></ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu"></ul>
+            </div>
+        </header>
+        <!--header end-->
+        <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse" style="margin-left:-210px">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion" style="display:none">
+
+                    <!-- <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p> -->
+                    <!-- <h5 class="centered">Marcel Newman</h5> -->
+
+                    <li class="mt">
+                        <a href="#">
+                            <i class="fa fa-cogs"></i>
+                            <span>Demo</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                <!-- <h3><i class="fa fa-angle-right"></i>WebSocket Demo</h3> -->
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div class="form-panel">
+                            <h4 class="mb"><i class="fa fa-angle-right"></i>WebSocket Connection</h4>
+                            <div class="form-horizontal style-form">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">WebSocket URI:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="wsURI" class="form-control" value="ws://nikoskatsanos.com:9999" />
+                                        <span class="help-block">Here you can connect to a WebSocket URI, send data to it and see the response.</span>
+                                    </div>
+                                    <label class="col-sm-2 col-sm-2 control-label">Connect:</label>
+                                    <div class="col-sm-10">
+                                        <div class="switch switch-square"
+                                             data-on-label="<i class=' fa fa-check'></i>"
+                                             data-off-label="<i class='fa fa-times'></i>">
+                                            <input id="connectChkBox" type="checkbox" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-panel">
+                            <h4 class="mb"><i class="fa fa-angle-right"></i>WebSocket Messages</h4>
+                            <div class="form-horizontal style-form" method="get">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Message:</label>
+                                    <div class="col-sm-10">
+                                        <input id="chatMsg" type="text" class="form-control" value="" onkeyup="submitOnEnter(event)" disabled>
+                                        <span class="help-block">Type your message to the WebSocket server here.</span>
+                                    </div>
+
+                                    <label class="col-sm-2 col-sm-2 control-label"></label>
+                                    <div class="col-sm-10">
+                                        <button id="sendMsgButton" type="button" class="btn btn-primary btn-lg btn-block" onclick="sendMessage()" disabled>Send</button>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Output:</label>
+                                    <div class="col-sm-5">
+                                        <textarea id="chatOut" cols="60" rows="15" disabled></textarea>
+                                        <span class="help-block">Chat output</span>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <textarea id="streamOut" cols="60" rows="15" disabled></textarea>
+                                        <span class="help-block">Stream output</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div><!-- col-lg-12-->
+                </div><!-- /row -->
+
+            </section><!--/wrapper -->
+        </section><!-- /MAIN CONTENT -->
+        <!--main content end-->
+        <!--footer start-->
+        <footer class="site-footer">
+            <div class="text-center">
+                2016 - Nikos Katsanos
+                <a href="index.html#" class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+        <!--footer end-->
+    </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+
+    <!--script for this page-->
+    <!--custom switch-->
+    <script src="assets/js/bootstrap-switch.js"></script>
+
+    <script>
+
+        var ws;
+
+        $("#connectChkBox").on("change", function (e) {
+            this.checked ? connect() : disconnect();
+        });
+
+        function connect() {
+            var uri = document.getElementById("wsURI").value;
+            ws = new WebSocket(uri);
+            console.log(ws);
+
+            var chatOutCtrl = document.getElementById("chatOut");
+
+            ws.onopen = function () {
+                console.log("Connected to WebSocket server!")
+                chatOutCtrl.value = chatOutCtrl.value + "\n" + "Connected to WebSocket server!";
+                document.getElementById("sendMsgButton").disabled = false;
+                document.getElementById("chatMsg").disabled = false;
+            }
+
+            ws.onmessage = function (evt) {
+                console.log("<<" + evt.data);
+                chatOutCtrl.value = chatOutCtrl.value + "\n" + evt.data;
+                chatOutCtrl.scrollTop = chatOutCtrl.scrollHeight;
+            }
+
+            ws.onclose = function () {
+                console.log("Websocket closed by server!")
+                chatOutCtrl.value = chatOutCtrl.value + "\n" + "Websocket closed by server!"
+                document.getElementById("sendMsgButton").disabled = true;
+                document.getElementById("chatMsg").disabled = true;
+            }
+        }
+
+        function disconnect() {
+            if (ws != null) {
+                ws.close()
+            }
+        }
+
+        function sendMessage() {
+            var chatMsgCtrl = document.getElementById("chatMsg");
+            var msg = chatMsgCtrl.value;
+            console.log(">> " + msg);
+            ws.send(msg);
+            chatMsgCtrl.value = "";
+        }
+
+        function submitOnEnter(event) {
+            if (event.which === 13) {
+                sendMessage();
+            }
+        }
+
+
+    </script>
+
+</body>
+</html>
